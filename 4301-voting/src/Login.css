@@ -1,0 +1,78 @@
+/* .form-container */
+.form-container {
+  position: relative;
+  width: 657px;
+  height: 674px;
+  left: 536px;
+  top: 221px;
+  background: rgba(217, 217, 217, 0.25);
+  box-shadow: 0px 10px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+/* .login-title */
+.login-title {
+  position: absolute;
+  width: 96px;
+  height: 72px;
+  left: 817px;
+  top: 269px;
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 72px;
+  color: #FFFFFF;
+}
+
+/* .input-field */
+.input-field {
+  position: absolute;
+  width: 541px;
+  height: 51px;
+  left: 594px;
+  top: 533px;
+  background: #D9D9D9;
+  border-radius: 10px;
+}
+
+/* .login-button */
+.login-button {
+  position: absolute;
+  width: 209px;
+  height: 85px;
+  left: 760px;
+  top: 749px;
+  background: #22EECC;
+  border-radius: 25px;
+}
+
+/* .login-button-text */
+.login-button-text {
+  position: absolute;
+  width: 96px;
+  height: 72px;
+  left: 816px;
+  top: 756px;
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 72px;
+  color: #000000;
+}
+
+/* .id-label */
+.id-label {
+  position: absolute;
+  width: 65px;
+  height: 27px;
+  left: 603px;
+  top: 506px;
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
