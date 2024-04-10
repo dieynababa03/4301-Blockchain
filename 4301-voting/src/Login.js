@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 
 const Login = () => {
   return(
@@ -7,4 +7,59 @@ const Login = () => {
   </div>
   );
 }
-export default Login;
+export default Login;*/
+// LoginForm.js
+
+import React, { useState } from 'react';
+import './styles.css'; // Import CSS file
+
+const LoginForm = () => {
+  const [idNumber, setIdNumber] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Add logic to authenticate user here
+  };
+
+  const handleIdNumberChange = (event) => {
+    setIdNumber(event.target.value);
+    if (!showPassword && event.target.value.trim() !== '') {
+      setShowPassword(true);
+    }
+  };
+
+  return (
+    <div className="form-container">
+      <h2 className="login-title">Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <input
+            type="text"
+            id="idNumber"
+            className="input-field"
+            placeholder="ID number"
+            value={idNumber}
+            onChange={handleIdNumberChange}
+          />
+        </div>
+        {showPassword && (
+          <div className="form-group">
+            <input
+              type="password"
+              id="password"
+              className="input-field"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        )}
+        <button type="submit" className="login-button">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default LoginForm;
