@@ -28,6 +28,7 @@ body{
   font-family: "League Gothic", sans-serif;
   font-size: 50px;
   color: #FFFF;
+  letter-spacing: 1.3px;
 }
 .btn{
   margin-bottom: 70px;
@@ -52,4 +53,13 @@ body{
   border-radius: 13px;
   background-color: #22EECC;
   cursor: pointer;
+  letter-spacing: 0.6px;
+}
+.incorrectInfo{
+
+  font-family: "League Gothic", sans-serif;
+  color: #3e0f0f;
+  font-size: 20px;
+  letter-spacing: 0.6px;
+
 }

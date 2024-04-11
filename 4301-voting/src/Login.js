@@ -1,26 +1,46 @@
-/*import React from 'react'
-
-const Login = () => {
-  return(
-  <div>
-    <h1>login page</h1>
-  </div>
-  );
-}
-export default Login;*/
-// LoginForm.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css'; // Import CSS file
+
 
 const LoginForm = () => {
   const [idNumber, setIdNumber] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [incorrectInfo, setIncorrectInfo] = useState({
+    attempt: false,
+    incorrect: false
+  });
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add logic to authenticate user here
+    const userInfo = {idNumber, password}
+    console.log(userInfo)
+    fetch('/Login', {
+      'method': 'POST',
+      body: JSON.stringify({
+        userInfo
+      }),
+  }).then(response => response.json()
+  ).then(res => {
+    console.log(res)
+    if (res === "True") {
+      console.log("Res: " + res)
+      setLoggedIn(true);
+      setIncorrectInfo({
+        attempt: false,
+        incorrect: false
+      })
+    } else {
+      console.log("Res: " + res)
+      setIncorrectInfo({
+        attempt: true,
+        incorrect: true
+      })
+      console.log(incorrectInfo)
+    }
+  })
   };
 
   const handleIdNumberChange = (event) => {
@@ -37,6 +57,9 @@ const LoginForm = () => {
       <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <div>
+            {incorrectInfo.attempt === true && incorrectInfo.incorrect === true && <p className="incorrectInfo">Incorrect ID and Password</p>}
+          </div>
           <input
             type="text"
             id="idNumber"
@@ -63,7 +86,7 @@ const LoginForm = () => {
       </div>
 
       <div className="btn">
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="login-button" onClick={handleSubmit}>Login</button>
       </div>
     </div>
     </div>
