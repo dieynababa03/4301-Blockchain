@@ -1,78 +1,55 @@
-/* .form-container */
-.form-container {
-  position: relative;
-  width: 657px;
-  height: 674px;
-  left: 536px;
-  top: 221px;
-  background: rgba(217, 217, 217, 0.25);
-  box-shadow: 0px 10px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Dongle:wght@400;700&family=Fira+Sans:wght@500&family=League+Gothic&family=Montserrat:ital,wght@0,400;0,500;1,600&family=Nunito:wght@500&family=Poppins:wght@400;500&display=swap');
+body{
+  overflow: hidden;
+  background-color: #00171f;
+  
 }
+.page-container{
 
-/* .login-title */
-.login-title {
-  position: absolute;
-  width: 96px;
-  height: 72px;
-  left: 817px;
-  top: 269px;
-  font-family: 'League Gothic';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 60px;
-  line-height: 72px;
-  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 750px;
+  width: 100%;
 }
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 500px;
+  width: 600px;
+  background-color: #415153;
+  border-radius: 20px;
+  box-shadow: 0px 10px 4px 10px #00000040;
 
-/* .input-field */
-.input-field {
-  position: absolute;
-  width: 541px;
-  height: 51px;
-  left: 594px;
-  top: 533px;
-  background: #D9D9D9;
-  border-radius: 10px;
 }
-
-/* .login-button */
-.login-button {
-  position: absolute;
-  width: 209px;
-  height: 85px;
-  left: 760px;
-  top: 749px;
-  background: #22EECC;
-  border-radius: 25px;
+.login-title{
+  font-family: "League Gothic", sans-serif;
+  font-size: 50px;
+  color: #FFFF;
 }
-
-/* .login-button-text */
-.login-button-text {
-  position: absolute;
-  width: 96px;
-  height: 72px;
-  left: 816px;
-  top: 756px;
-  font-family: 'League Gothic';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 60px;
-  line-height: 72px;
-  color: #000000;
+.btn{
+  margin-bottom: 70px;
 }
-
-/* .id-label */
-.id-label {
-  position: absolute;
-  width: 65px;
-  height: 27px;
-  left: 603px;
-  top: 506px;
-  font-family: 'League Gothic';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: #FFFFFF;
+.input-field{
+    width: 400px;
+    height: 50px;
+    font-family: "League Gothic", sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color:#D9D9D9;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-bottom: 13px;
+}
+.btn .login-button{
+  font-family: "League Gothic", sans-serif;
+  font-size: 28px;
+  width: 150px;
+  height: 48px;
+  border: none;
+  border-radius: 13px;
+  background-color: #22EECC;
+  cursor: pointer;
 }

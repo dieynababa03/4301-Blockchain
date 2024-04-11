@@ -11,7 +11,7 @@ export default Login;*/
 // LoginForm.js
 
 import React, { useState } from 'react';
-import './styles.css'; // Import CSS file
+import './Login.css'; // Import CSS file
 
 const LoginForm = () => {
   const [idNumber, setIdNumber] = useState('');
@@ -31,8 +31,10 @@ const LoginForm = () => {
   };
 
   return (
+    <div className="page-container">
     <div className="form-container">
-      <h2 className="login-title">Login</h2>
+      <div className="title"><h2 className="login-title">Login</h2></div>
+      <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
@@ -44,6 +46,7 @@ const LoginForm = () => {
             onChange={handleIdNumberChange}
           />
         </div>
+        
         {showPassword && (
           <div className="form-group">
             <input
@@ -56,8 +59,13 @@ const LoginForm = () => {
             />
           </div>
         )}
-        <button type="submit" className="login-button">Login</button>
       </form>
+      </div>
+
+      <div className="btn">
+        <button type="submit" className="login-button">Login</button>
+      </div>
+    </div>
     </div>
   );
 };
