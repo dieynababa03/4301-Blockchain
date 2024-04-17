@@ -1,42 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import "./Ballot.css";
-
+import joe from './img/joe.png';
+import rk from './img/rk.jpeg';
+import trump from './img/trump.jpeg';
 export const Ballot = () => {
+    const [selectedOption, setSelectedOption] = useState('');
+    const handleClick = (e) => {
+        setSelectedOption(e.target.id);
+    }
+
     return (
-        <div className="voting-page">
-            <div className="div">
-                <div className="overlap">
-                    <div className="glass-effect" />
-                    <div className="candidates">
-                        <div className="candidate">
-                            <img className="headshot" alt="Headshot" src="RobertFKennedy.jpeg" />
-                            <div className="name">Robert Kennedy (I)</div>
-                            <div className="ellipse" />
-                        </div>
-                        <div className="overlap-group-wrapper">
-                            <div className="overlap-group">
-                                <img className="img" alt="Headshot" src="Trump.jpeg" />
-                                <div className="text-wrapper">Donald Trump (R)</div>
-                                <div className="selector">
-                                    <div className="selected" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="candidate-2">
-                            <img className="headshot" alt="Headshot" src="Biden.jpeg" />
-                            <div className="name-2">Joe Biden (D)</div>
-                            <div className="selector-2" />
-                        </div>
+        <div className="page-container">
+            <div className="content-container">
+                <div className="title">
+                    <h1>
+                        Presidential Election
+                    </h1>
+                    <h3>
+                        Voting Dates MM/DD/YYYY - MM/DD/YYYY
+                    </h3>
+                </div>
+                <div className="candidate-container">
+                    <div id="box1" className="box">
+                        <input id="c1" type="radio" name="candidate"/>
+                        <img className="joe" src={joe}/>
+                        <h3>Joe Biden (D)</h3>
+
+                    </div>
+                    <div id="box2" className="box">
+                        <input id="c2" type="radio" name="candidate"/>
+                        <img className="trump" src={trump}/>
+                        <h3>Donald Trump (R)</h3>
+                    </div>
+                    <div id="box3" className="box">
+                        <input id="c3" type="radio" name="candidate"/>
+                        <img className="rk" src={rk}/>
+                        <h3>Robert Kennedy (I)</h3>
+
                     </div>
                 </div>
-                <div className="submit-vote-button">
-                    <div className="div-wrapper">
-                        <div className="text-wrapper-2">Submit Vote</div>
-                    </div>
-                </div>
-                <div className="election-header">
-                    <p className="p">Voting Dates MM/DD/YYYY - MM/DD/YYYY</p>
-                    <div className="text-wrapper-3">Presidential Election</div>
+                <div className="submit">
+                    <button>Submit Vote</button>
                 </div>
             </div>
         </div>
