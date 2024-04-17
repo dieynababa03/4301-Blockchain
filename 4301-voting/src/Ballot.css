@@ -1,0 +1,235 @@
+.voting-page {
+    background-color: #00171f;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.voting-page .div {
+    background-color: #00171f;
+    height: 1117px;
+    position: relative;
+    width: 1728px;
+}
+
+.voting-page .overlap {
+    height: 674px;
+    left: 506px;
+    position: absolute;
+    top: 221px;
+    width: 716px;
+}
+
+.voting-page .glass-effect {
+    background-color: #d9d9d940;
+    border-radius: 25px;
+    box-shadow: 0px 10px 4px 10px #00000040;
+    height: 674px;
+    left: 29px;
+    position: absolute;
+    top: 0;
+    width: 657px;
+}
+
+.voting-page .candidates {
+    height: 540px;
+    left: 0;
+    position: absolute;
+    top: 67px;
+    width: 716px;
+}
+
+.voting-page .candidate {
+    height: 140px;
+    left: 94px;
+    position: absolute;
+    top: 400px;
+    width: 533px;
+}
+
+.voting-page .headshot {
+    height: 140px;
+    left: 79px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100px;
+}
+
+.voting-page .name {
+    color: #ffffff;
+    font-family: "League Gothic", sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    left: 273px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 46px;
+    width: 258px;
+}
+
+.voting-page .ellipse {
+    background-color: #d9d9d9;
+    border-radius: 17px;
+    height: 34px;
+    left: 0;
+    position: absolute;
+    top: 54px;
+    width: 34px;
+}
+
+.voting-page .overlap-group-wrapper {
+    height: 212px;
+    left: 0;
+    position: absolute;
+    top: 164px;
+    width: 718px;
+}
+
+.voting-page .overlap-group {
+    background-color: #ca0404;
+    border-radius: 25px;
+    box-shadow: 0px 7px 4px #ffffff99;
+    height: 212px;
+    position: relative;
+    width: 716px;
+}
+
+.voting-page .img {
+    height: 140px;
+    left: 173px;
+    object-fit: cover;
+    position: absolute;
+    top: 36px;
+    width: 100px;
+}
+
+.voting-page .text-wrapper {
+    color: #ffffff;
+    font-family: "League Gothic", sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    left: 367px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 81px;
+    width: 190px;
+}
+
+.voting-page .selector {
+    background-color: #d9d9d9;
+    border-radius: 17px;
+    height: 34px;
+    left: 94px;
+    position: absolute;
+    top: 89px;
+    width: 34px;
+}
+
+.voting-page .selected {
+    background-color: #62627a;
+    border-radius: 10px;
+    box-shadow: inset 0px 4px 4px #00000040;
+    height: 20px;
+    left: 7px;
+    position: relative;
+    top: 7px;
+    width: 20px;
+}
+
+.voting-page .candidate-2 {
+    height: 140px;
+    left: 94px;
+    position: absolute;
+    top: 0;
+    width: 419px;
+}
+
+.voting-page .name-2 {
+    color: #ffffff;
+    font-family: "League Gothic", sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    left: 273px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 31px;
+    width: 144px;
+}
+
+.voting-page .selector-2 {
+    background-color: #d9d9d9;
+    border-radius: 17px;
+    height: 34px;
+    left: 0;
+    position: absolute;
+    top: 39px;
+    width: 34px;
+}
+
+.voting-page .submit-vote-button {
+    height: 87px;
+    left: 693px;
+    position: absolute;
+    top: 963px;
+    width: 344px;
+}
+
+.voting-page .div-wrapper {
+    background-color: #22eecc;
+    border-radius: 20px;
+    height: 87px;
+    position: relative;
+    width: 342px;
+}
+
+.voting-page .text-wrapper-2 {
+    color: #000000;
+    font-family: "League Gothic", sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    left: 95px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 17px;
+    white-space: nowrap;
+    width: 152px;
+}
+
+.voting-page .election-header {
+    height: 115px;
+    left: 684px;
+    position: absolute;
+    top: 53px;
+    width: 381px;
+}
+
+.voting-page .p {
+    color: #ffffff;
+    font-family: "League Gothic", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 77px;
+    white-space: nowrap;
+}
+
+.voting-page .text-wrapper-3 {
+    color: #ffffff;
+    font-family: "League Gothic", sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    left: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+}
