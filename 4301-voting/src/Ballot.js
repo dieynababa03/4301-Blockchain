@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./Ballot.css";
+import "./css/Ballot.css";
 import joe from './img/joe.png';
 import rk from './img/rk.jpeg';
 import trump from './img/trump.jpeg';
