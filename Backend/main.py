@@ -11,11 +11,12 @@ cursor = conn.cursor()
 
 # Create a Users table if it doesn't exist
 cursor.execute('''
-    CREATE TABLE IF NOT EXISTS Users (
-        Username,
-        Password
+    CREATE TABLE IF NOT EXISTS UserID (
+        id TEXT 
     )
 ''')
+
+cursor.execute("INSERT INTO UserID (id) VALUES (?)", ('12345',))
 
 
 
@@ -25,13 +26,11 @@ def user_auth():
    if request.method == 'POST':
       data = json.loads(request.data)
       print(data)
-      username = data['userInfo']['idNumber']
-      password = data['userInfo']['password']
-      if not username or not password:
+      id = data['userInfo']['idNumber']
+      if not id:
          return json.dumps("False")
-      query = "SELECT * FROM Users WHERE Username = ? AND Password = ?"
-      cursor.execute(''' INSERT INTO Users (Username, Password) VALUES ('admin', 'admin') ''')
-      cursor.execute(query, (username, password))
+      query = "SELECT * FROM UserID WHERE id = ?"
+      cursor.execute(query, (id,))
       result = cursor.fetchone()
 
       if(result):
