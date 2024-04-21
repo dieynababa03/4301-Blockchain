@@ -4,8 +4,6 @@ import './css/Login.css'; // Import CSS file
 
 const LoginForm = () => {
   const [idNumber, setIdNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [incorrectInfo, setIncorrectInfo] = useState({
     attempt: false,
@@ -43,12 +41,6 @@ const LoginForm = () => {
   })
   };
 
-  const handleIdNumberChange = (event) => {
-    setIdNumber(event.target.value);
-    if (!showPassword && event.target.value.trim() !== '') {
-      setShowPassword(true);
-    }
-  };
 
   return (
     <div className="page-container">
@@ -70,18 +62,6 @@ const LoginForm = () => {
           />
         </div>
         
-        {showPassword && (
-          <div className="form-group">
-            <input
-              type="password"
-              id="password"
-              className="input-field"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        )}
       </form>
       </div>
 
