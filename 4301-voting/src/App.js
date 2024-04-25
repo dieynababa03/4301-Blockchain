@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './css/App.css';
+import './css/Admin.css';
 import Login from './Login';
 import Admin from './Admin'; 
 import Ballot from './Ballot';
