@@ -25,18 +25,19 @@ export const Ballot = () => {
                         <input id="c1" type="radio" name="candidate"/>
                         <img className="joe" src={joe}/>
                         <h3>Joe Biden (D)</h3>
-
+                        <p>Count: 0</p>
                     </div>
                     <div id="box2" className="box">
                         <input id="c2" type="radio" name="candidate"/>
                         <img className="trump" src={trump}/>
                         <h3>Donald Trump (R)</h3>
+                        <p>Count: 1</p>
                     </div>
                     <div id="box3" className="box">
                         <input id="c3" type="radio" name="candidate"/>
                         <img className="rk" src={rk}/>
                         <h3>Robert Kennedy (I)</h3>
-
+                        <p>Count: 0</p>
                     </div>
                 </div>
                 <div className="submit">

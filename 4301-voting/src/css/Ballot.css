@@ -84,6 +84,7 @@ body{
 
 .candidate-container h3{
     letter-spacing: 0.5px;
+    width: 250px;
 }
 
 input{
