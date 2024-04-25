@@ -42,7 +42,8 @@ const LoginForm = () => {
   return (
     <div className="page-container">
       <div className="form-container">
-        <div className="title"><h2 className="login-title">Login</h2></div>
+        <div className="title"><h2 className="login-title">Login</h2>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -55,8 +56,8 @@ const LoginForm = () => {
             />
             {incorrectInfo.attempt && incorrectInfo.incorrect && <p className="incorrectInfo">Incorrect ID</p>}
           </div>
-          <button type="submit" className="login-button">Login</button>
         </form>
+        <button type="submit" className="login-button">Login</button>
       </div>
     </div>
   );
