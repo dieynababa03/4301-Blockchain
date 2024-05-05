@@ -2,7 +2,6 @@ const {Web3} = require('web3');
 const web3 = new Web3('http://127.0.0.1:7545');
 
 const contract = require('../ethereum/build/contracts/Voting.json');
-// console.log(typeof contract.abi, Array.isArray(contract.abi)); 
 
 const contractABI = contract.abi;
 const contractAddress = contract.networks[5777].address; 
@@ -49,7 +48,7 @@ class EthereumService {
         const tx = {
             from: this.account.address,
             to: this.contract.options.address,
-            gas: 1000000, // Adjust gas limit as necessary
+            gas: 1000000, 
             gasPrice: await web3.eth.getGasPrice(), // Fetch current gas price
             nonce: this.nonce, // Use the managed nonce
             data: data

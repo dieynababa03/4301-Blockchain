@@ -22,11 +22,10 @@ router.post('/addCandidate', async (req, res) => {
   
   try {
       const result = await EthereumService.sendTransaction('addCandidate', [name, party]);
-      // Assuming 'result' might contain BigInt values, convert them to strings
       const responseData = {
           success: true,
           message: "Candidate added successfully",
-          data: result.toString()  // Convert BigInt result to String if it's a numeric result
+          data: result.toString() 
       };
       res.json(responseData);
   } catch (error) {
@@ -34,7 +33,7 @@ router.post('/addCandidate', async (req, res) => {
       res.status(500).json({
           success: false,
           message: "Failed to add candidate",
-          error: error.toString()  // Ensure errors are also converted to string if necessary
+          error: error.toString()  
       });
   }
 });

@@ -10,7 +10,7 @@ export const Ballot = () => {
     const [selectedCandidates, setSelectedCandidates] = useState(new Set());
     const [votingDates, setVotingDates] = useState('');
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
-    const web3 = new Web3('http://127.0.0.1:7545'); // Make sure Web3 is properly initialized
+    const web3 = new Web3('http://127.0.0.1:7545');
 
     useEffect(() => {
         fetchData();
@@ -23,11 +23,9 @@ export const Ballot = () => {
             setVotingDates(`${dates.votingStart} - ${dates.votingEnd}`);
     
             const candidatesResponse = await nodeApi.get('/ballot/candidates');
-            console.log('Candidates before filter:', candidatesResponse.data.data); // Log raw data from the server
             const validCandidates = candidatesResponse.data.data.filter(candidate => 
                 candidate && candidate.id != 0
             );
-            console.log('Valid Candidates after filter:', validCandidates); // Log filtered data
             setCandidates(validCandidates);
         } catch (error) {
             console.error('Failed to fetch data:', error);
@@ -48,27 +46,27 @@ export const Ballot = () => {
     const checkVoterStatus = async (hashedDLID) => {
         try {
             const response = await nodeApi.get(`/ballot/voterStatus/${hashedDLID}`);
-            return response.data.data.hasVoted;  // Ensure you access the hasVoted correctly depending on your response structure
+            return response.data.data.hasVoted;  
         } catch (error) {
             console.error('Error checking voter status:', error);
-            return false;  // Assume not voted if error occurs
+            return false;  
         }
     };
 
     const handleSubmit = async () => {
         if (isAdmin) {
             try {
-                const candidateIds = Array.from(selectedCandidates); // Ensure this is an array of candidate IDs
+                const candidateIds = Array.from(selectedCandidates); 
                 await nodeApi.delete('/admin/deleteCandidate', { data: { candidateIds } });
                 alert('Candidates deleted successfully!');
-                fetchData(); // Refresh data to show updates
+                fetchData(); 
             } catch (error) {
                 console.error('Failed to delete candidates:', error);
                 alert(`Failed to delete candidates: ${error.response ? error.response.data.message : error.message}`);
             }
         } else {
             if (!selectedOption) return alert("Please select a candidate to vote.");
-            const hashedDLID = localStorage.getItem('userDLHash'); // Assuming it's stored securely
+            const hashedDLID = localStorage.getItem('userDLHash'); 
             try {
 
                 const hasAlreadyVoted = await checkVoterStatus(hashedDLID);
@@ -84,7 +82,7 @@ export const Ballot = () => {
                     hashedDLID
                 });
                 alert('Vote submitted successfully!');
-                fetchData(); // Refresh data to reflect the new vote count
+                fetchData(); 
             } catch (error) {
                 console.error('Failed to submit vote:', error);
                 alert('Failed to submit vote.');

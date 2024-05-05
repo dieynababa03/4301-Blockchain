@@ -1,5 +1,5 @@
 const express = require('express');
-const EthereumService = require('./ethereumService'); // Ensure this path is correct
+const EthereumService = require('./ethereumService'); 
 const router = express.Router();
 
 // Vote endpoint
@@ -9,7 +9,6 @@ router.post('/vote', async (req, res) => {
     const method = 'vote';
     const params = [candidateID, hashedDLID];
     const result = await EthereumService.sendTransaction(method, params);
-    // Assume result could be a BigInt and convert it (if applicable)
     const data = result.toString();
     res.json({ success: true, message: "Vote successfully recorded", data: data });
   } catch (error) {
@@ -25,7 +24,6 @@ router.get('/candidates', async (req, res) => {
     const params = [];
     const result = await EthereumService.call(method, params);
 
-    // Deconstruct the result into its components
     const ids = result[0];
     const names = result[1];
     const parties = result[2];
@@ -51,9 +49,8 @@ router.get('/candidates', async (req, res) => {
 router.get('/votingDates', async (req, res) => {
   try {
     const method = 'getVotingDates';
-    const params = []; // No parameters needed for this call
+    const params = []; 
     const result = await EthereumService.call(method, params);
-    // Since the result is a tuple of two uint256 values, directly access them
     console.log(result)
     const data = {
       votingStart: new Date(parseInt(result[0].toString()) * 1000).toLocaleDateString(), // Convert BigInt to Number and then to Date

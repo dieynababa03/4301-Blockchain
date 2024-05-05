@@ -8,7 +8,7 @@ function Admin() {
     const [party, setParty] = useState('');
 
     const handleSubmit = async (e) => {
-        e.preventDefault();  // Prevent the default form submission behavior
+        e.preventDefault();
         try {
             const response = await nodeApi.post('/admin/addCandidate', { name, party });
             alert(`Candidate added successfully: ${response.data.message}`);
