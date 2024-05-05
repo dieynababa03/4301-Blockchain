@@ -4,6 +4,7 @@ import NavBar from './Navbar';
 import Login from './Login';
 import Admin from './Admin';
 import Ballot from './Ballot';
+import './css/App.css'
 
 function App() {
   return (

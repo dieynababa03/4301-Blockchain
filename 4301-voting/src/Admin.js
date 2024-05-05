@@ -41,8 +41,8 @@ function Admin() {
                             onChange={(e) => setParty(e.target.value)}
                         />
                     </div>
-                    <button type="submit" className='candidate-button'>Add Candidate</button>
                 </form>
+                <button type="submit" className='candidate-button'>Add Candidate</button>
             </div>
         </div>
     );

@@ -17,15 +17,15 @@ const NavBar = () => {
   return (
     <nav>
       {isLoggedIn ? (
-        <div>
+        <div className='navbar'>
           <button onClick={() => navigate('/ballot')}>Candidates</button>
           {isAdmin && <button onClick={() => navigate('/admin')}>Admin</button>}
-          <button onClick={handleLogout}>Logout</button>
+          <button className="login-logout" onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-        <div>
+        <div className='navbar'>
           <button onClick={() => navigate('/ballot')}>Candidates</button>
-          <button onClick={() => navigate('/')}>Login</button>
+          <button className="login-logout" onClick={() => navigate('/')}>Login</button>
         </div>
       )}
     </nav>
