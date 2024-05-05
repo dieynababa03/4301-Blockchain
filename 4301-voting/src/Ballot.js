@@ -96,17 +96,17 @@ export const Ballot = () => {
         <div className="page-container">
             <div className="content-container">
                 <div className="title">
-                    <h1>Presidential Election</h1>
-                    <h3>Voting Dates: {votingDates}</h3>
+                    <p className="election">Presidential Election</p>
+                    <p className="dates">Voting Dates: {votingDates}</p>
                 </div>
                 <div className="candidate-container">
                     {candidates.map((candidate) => (
                         <div key={candidate.id} className="box">
-                            <h3>{candidate.name} ({candidate.party})</h3>
+                            <p>{candidate.name} ({candidate.party})</p>
                             <p>Count: {candidate.voteCount}</p>
                             {isAdmin ? (
-                                <button onClick={() => handleSelectCandidate(candidate.id)}>
-                                    {selectedCandidates.has(candidate.id) ? "Deselect" : "Select for Deletion"}
+                                <button className="candidate-button" onClick={() => handleSelectCandidate(candidate.id)}>
+                                    {selectedCandidates.has(candidate.id) ? "Deselect" : "Delete"}
                                 </button>
                             ) : (
                                 <input type="radio" name="candidate" value={candidate.id} onChange={(e) => setSelectedOption(e.target.value)} />

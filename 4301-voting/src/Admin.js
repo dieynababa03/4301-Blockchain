@@ -42,7 +42,7 @@ function Admin() {
                         />
                     </div>
                 </form>
-                <button type="submit" className='candidate-button'>Add Candidate</button>
+                <button type="submit" className='candidate-button' onClick={handleSubmit}>Add Candidate</button>
             </div>
         </div>
     );
