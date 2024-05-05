@@ -17,14 +17,14 @@ def init_db():
         cursor = db.cursor()
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS UserID (
-                id TEXT,
-                admin TEXT    
+                id TEXT PRIMARY KEY,
+                admin BOOLEAN    
             )
         ''')
-        # Check if the default user '12345' already exists to avoid duplicates
-        cursor.execute("SELECT id FROM UserID WHERE id = ?", ('12345',))
+        admin_hash = '0x2a359feeb8e488a1af2c03b908b3ed7990400555db73e1421181d97cac004d48'
+        cursor.execute("SELECT id FROM UserID WHERE id = ?", (admin_hash,))
         if cursor.fetchone() is None:
-            cursor.execute("INSERT INTO UserID (id) VALUES (?)", ('12345',))
+            cursor.execute("INSERT INTO UserID (id, admin) VALUES (?, ?)", (admin_hash, True))
         db.commit()
 
 @app.teardown_appcontext
@@ -33,7 +33,7 @@ def close_db(error):
     if db is not None:
         db.close()
 
-@app.route('/Login', methods=['GET', 'POST'])
+@app.route('/Login', methods=['POST'])
 def user_auth():
     db = get_db()
     cursor = db.cursor()
@@ -41,17 +41,20 @@ def user_auth():
         data = json.loads(request.data)
         user_id = data.get('userInfo', {}).get('idNumber', None)
         if not user_id:
-            return json.dumps("False")
+            return json.dumps({"authenticated": False, "admin": False})
+
         cursor.execute("SELECT * FROM UserID WHERE id = ?", (user_id,))
         result = cursor.fetchone()
         if result:
-            print("successfully authenticated")
-            return json.dumps("True")
+            admin_status = bool(int(result[1]))  # Ensure the admin field is interpreted correctly
+            return json.dumps({"authenticated": True, "admin": admin_status})
         else:
-            return json.dumps("False")
+            cursor.execute("INSERT INTO UserID (id, admin) VALUES (?, ?)", (user_id, False))
+            db.commit()
+            return json.dumps({"authenticated": True, "admin": False})
     else:
         return 'Request method is not supported', 400
 
 if __name__ == '__main__':
-    init_db()  # Initialize the database and insert default user if not exists
+    init_db() 
     app.run(debug=True)

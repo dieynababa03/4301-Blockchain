@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './css/Admin.css';
+import NavBar from './Navbar';
 import Login from './Login';
-import Admin from './Admin'; 
+import Admin from './Admin';
 import Ballot from './Ballot';
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />

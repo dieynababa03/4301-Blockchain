@@ -1,49 +1,55 @@
 import React, { useState } from 'react';
-import './css/Login.css'; // Import CSS file
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { ethers } from 'ethers';  
 
 const LoginForm = () => {
   const [idNumber, setIdNumber] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [incorrectInfo, setIncorrectInfo] = useState({
-    attempt: false,
-    incorrect: false
-  });
+  const navigate = useNavigate();
+  const [incorrectInfo, setIncorrectInfo] = useState(false);
 
-  // Handle changes to the ID number input
   const handleIdNumberChange = (event) => {
     setIdNumber(event.target.value);
+    setIncorrectInfo(false);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const userInfo = { idNumber };
-    console.log(userInfo);
-    fetch('/Login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ userInfo })
-    }).then(response => response.json())
-      .then(res => {
-        console.log(res);
-        if (res === "True") {
-          setLoggedIn(true);
-          setIncorrectInfo({ attempt: false, incorrect: false });
-        } else {
-          setIncorrectInfo({ attempt: true, incorrect: true });
-        }
-      }).catch(error => {
-        console.error('Error:', error);
-        setIncorrectInfo({ attempt: true, incorrect: true });
+    if (idNumber.length !== 9) {
+      setIncorrectInfo(true);
+      return;
+    }
+
+    const hashedIdNumber = ethers.keccak256(ethers.toUtf8Bytes(idNumber));
+
+    try {
+      const response = await axios.post('/Login', {
+        userInfo: { idNumber: hashedIdNumber }
       });
+      const res = response.data;
+
+      if(res.authenticated) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('isAdmin', res.admin.toString());
+        localStorage.setItem('userDLHash', hashedIdNumber);
+        if(res.admin) {
+          navigate('/admin');
+        } else {
+          navigate('/ballot');
+        }
+      } else {
+        setIncorrectInfo(true);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setIncorrectInfo(true);
+    }
   };
 
   return (
     <div className="page-container">
       <div className="form-container">
-        <div className="title"><h2 className="login-title">Login</h2>
-        </div>
+        <div className="title"><h2 className="login-title">Login</h2></div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -52,12 +58,12 @@ const LoginForm = () => {
               className="input-field"
               placeholder="ID number"
               value={idNumber}
-              onChange={handleIdNumberChange} // Add this line
+              onChange={handleIdNumberChange}
             />
-            {incorrectInfo.attempt && incorrectInfo.incorrect && <p className="incorrectInfo">Incorrect ID</p>}
+            {incorrectInfo && <p className="incorrectInfo">Incorrect ID or length not valid</p>}
           </div>
+          <button type="submit" className="login-button">Login</button>
         </form>
-        <button type="submit" className="login-button">Login</button>
       </div>
     </div>
   );

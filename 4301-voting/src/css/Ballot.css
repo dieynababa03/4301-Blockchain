@@ -8,10 +8,10 @@ body{
 }
 .page-container{
     display: flex;
-    color: white;
+    background-color: #00171f;
     align-items: center;
     justify-content: center;
-    height: 750px;
+    height: 100vh;
     width: 100%;
 }
 .content-container{

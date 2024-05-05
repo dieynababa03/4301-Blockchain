@@ -1,35 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { nodeApi } from './axiosConfigs';
 import './css/Admin.css';
 
 function Admin() {
-  return (
-    <div className='admin'>
-      <div className='admin-container'>
-        <p className='console-title'>Admin Console</p>
-        <div className='candidate-input-container'>
-          <div className='candidate-input-name-container'>
-            <p>Candidate Name</p>
-            <input className='candidate-input-name' placeholder="Enter Name"></input>
-          </div>
-          <div className='candidate-input-party-container'>
-            <p>Candidate Party</p>
-            <input className='candidate-input-party' placeholder="Enter Party"></input>
-          </div>
-        </div>
-        <div className='date-input-container'>
-          <div className='start-date-container'>
-            <p>Start Date</p>
-            <input className='date-input' type='date'></input>
-          </div>
-          <div className='end-date-container'>
-            <p>End Date</p>
-            <input className='date-input' type='date'></input>
-          </div>
-        </div>
-        <button className='candidate-button'>Add Candidate</button>
-      </div>
-    </div>
+    const [name, setName] = useState('');
+    const [party, setParty] = useState('');
 
-  );
+    const handleSubmit = async (e) => {
+        e.preventDefault();  // Prevent the default form submission behavior
+        try {
+            const response = await nodeApi.post('/admin/addCandidate', { name, party });
+            alert(`Candidate added successfully: ${response.data.message}`);
+        } catch (error) {
+            console.error('Failed to add candidate:', error);
+            alert(`Failed to add candidate: ${error.response ? error.response.data.message : error.message}`);
+        }
+    };
+
+    return (
+        <div className='admin'>
+            <div className='admin-container'>
+                <p className='console-title'>Admin Console</p>
+                <form onSubmit={handleSubmit} className='candidate-input-container'>
+                    <div className='candidate-input-name-container'>
+                        <p>Candidate Name</p>
+                        <input 
+                            className='candidate-input-name' 
+                            placeholder="Enter Name" 
+                            value={name} 
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div className='candidate-input-party-container'>
+                        <p>Candidate Party</p>
+                        <input 
+                            className='candidate-input-party' 
+                            placeholder="Enter Party" 
+                            value={party} 
+                            onChange={(e) => setParty(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit" className='candidate-button'>Add Candidate</button>
+                </form>
+            </div>
+        </div>
+    );
 }
+
 export default Admin;
