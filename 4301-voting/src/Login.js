@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';  
-
+import './css/Login.css'; 
 const LoginForm = () => {
   const [idNumber, setIdNumber] = useState('');
   const navigate = useNavigate();
@@ -62,8 +62,8 @@ const LoginForm = () => {
             />
             {incorrectInfo && <p className="incorrectInfo">Incorrect ID or length not valid</p>}
           </div>
-          <button type="submit" className="login-button">Login</button>
         </form>
+        <button type="submit" className="login-button" onClick={handleSubmit}>Login</button>
       </div>
     </div>
   );
