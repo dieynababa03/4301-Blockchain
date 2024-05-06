@@ -5,19 +5,27 @@ import Login from './Login';
 import Admin from './Admin';
 import Ballot from './Ballot';
 import './css/App.css'
+import { AuthProvider } from './AuthContext';
+import { ProtectedRoute } from './ProtectedRoute';
 
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/ballot" element={<Ballot />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <NavBar />
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/admin" element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            } />
+            <Route path="/ballot" element={<Ballot />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

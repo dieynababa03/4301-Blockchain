@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';  
+import { useAuth } from './AuthContext'; 
 import './css/Login.css'; 
+
 const LoginForm = () => {
   const [idNumber, setIdNumber] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth(); 
   const [incorrectInfo, setIncorrectInfo] = useState(false);
 
   const handleIdNumberChange = (event) => {
@@ -23,15 +26,11 @@ const LoginForm = () => {
     const hashedIdNumber = ethers.keccak256(ethers.toUtf8Bytes(idNumber));
 
     try {
-      const response = await axios.post('/Login', {
-        userInfo: { idNumber: hashedIdNumber }
-      });
+      const response = await axios.post('/Login', { userInfo: { idNumber: hashedIdNumber } });
       const res = response.data;
 
       if(res.authenticated) {
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('isAdmin', res.admin.toString());
-        localStorage.setItem('userDLHash', hashedIdNumber);
+        login(res.admin);
         if(res.admin) {
           navigate('/admin');
         } else {
@@ -63,7 +62,7 @@ const LoginForm = () => {
             {incorrectInfo && <p className="incorrectInfo">Incorrect ID or length not valid</p>}
           </div>
         </form>
-        <button type="submit" className="login-button" onClick={handleSubmit}>Login</button>
+        <button type="submit" className="login-button">Login</button>
       </div>
     </div>
   );
