@@ -15,6 +15,7 @@ def init_db():
     with app.app_context():
         db = get_db()
         cursor = db.cursor()
+        cursor.execute('DROP TABLE IF EXISTS UserID')  # Add this line
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS UserID (
                 id TEXT PRIMARY KEY,
